@@ -10,11 +10,13 @@
     <h1>Geolocalização (GPS)</h1>
     <button id="botao-geo">Minha Localização</button>
     <div id="local_geo"></div>
+    <iframe id="mapa" width="1024" height="500px" src=""></iframe>
 
 
     <script>
         const botao =document.getElementById("botao-geo");
         const local = document.getElementById("local_geo");
+        const mapa = document.getElementById("mapa");
         
         botao.addEventListener("click", () => {
             if("geolocation" in navigator){
@@ -22,7 +24,7 @@
                 navigator.geolocation.getCurrentPosition(position =>{
                     const {latitude,longitude} = position.coords
                     local.textContent = `LATITUDE: ${latitude}, LONGITUDE: ${longitude}`
-
+                    mapa.src = `https://www.google.com/maps?q=${latitude},${longitude}&output=embed`;
                 }, error =>{
                     alert("ERROR A OBTER A POSIÇÃO")
                 });
