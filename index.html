@@ -17,7 +17,7 @@
         const local = document.getElementById("local_geo");
         
         botao.addEventListener("click", () => {
-            if("gelocation" in navigator){
+            if("geolocation" in navigator){
                 //caso tenha geolocalização no browser
                 navigator.geolocation.getCurrentPosition(position =>{
                     const {latitude,longitude} = position.coords
