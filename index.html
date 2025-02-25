@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocalização</title>
+</head>
+<body>
+
+    <h1>Geolocalização (GPS)</h1>
+    <button id="botao-geo">Minha Localização</button>
+    <div id="local_geo"></div>
+
+
+    <script>
+        const botao =document.getElementById("botao-geo");
+        const local = document.getElementById("local_geo");
+        
+        botao.addEventListener("click", () => {
+            if("gelocation" in navigator){
+                //caso tenha geolocalização no browser
+                navigator.geolocation.getCurrentPosition(position =>{
+                    const {latitude,longitude} = position.coords
+                    local.textContent = `LATITUDE: ${latitude}, LONGITUDE: ${longitude}`
+
+                }, error =>{
+                    alert("ERROR A OBTER A POSIÇÃO")
+                });
+            
+            }else{
+                alert("Seu navegador não suporta geolocalização!");
+            }
+        });
+    </script>
+    
+
+
+</body>
+</html>
